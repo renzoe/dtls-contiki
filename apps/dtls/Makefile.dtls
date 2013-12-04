@@ -1,0 +1,2 @@
+dtls_src += dtls.c util.c sha2.c hmac_sha2.c aes_ccm.c
+CFLAGS += -DMMEM_CONF_SIZE=1024
