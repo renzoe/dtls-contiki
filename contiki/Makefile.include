@@ -96,7 +96,7 @@ $(OBJECTDIR):
 ### Include application makefiles
 
 ifdef APPS
-  APPDS = ${wildcard ${foreach DIR, $(APPDIRS), ${addprefix $(DIR)/, $(APPS)}}} \
+  APPDS += ${wildcard ${foreach DIR, $(APPDIRS), ${addprefix $(DIR)/, $(APPS)}}} \
              ${wildcard ${addprefix $(CONTIKI)/apps/, $(APPS)} \
              ${addprefix $(CONTIKI)/platform/$(TARGET)/apps/, $(APPS)} \
              $(APPS)}
