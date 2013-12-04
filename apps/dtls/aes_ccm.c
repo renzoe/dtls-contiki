@@ -50,7 +50,9 @@
  */
 
 #include "aes_ccm.h"
-#if CONTIKI_TARGET_AVR_RAVEN
+
+//#if CONTIKI_TARGET_AVR_RAVEN //#if CONTIKI_TARGET_AVR_ATMEGA128RFA1 
+#ifdef __AVR__
 #include <avr/pgmspace.h>
 #else
 #define PROGMEM
@@ -563,7 +565,7 @@ static const unsigned long rcon[] = {
 
 
 unsigned long getTe0(uint16_t index) {
-#if CONTIKI_TARGET_AVR_RAVEN
+#ifdef __AVR__ //#if CONTIKI_TARGET_AVR_RAVEN
     return pgm_read_dword(&Te0u[index]);
 #else
     return Te0u[index];
@@ -571,7 +573,7 @@ unsigned long getTe0(uint16_t index) {
 }
 
 unsigned long getTe1(uint16_t index) {
-#if CONTIKI_TARGET_AVR_RAVEN
+#ifdef __AVR__ //#if CONTIKI_TARGET_AVR_RAVEN
     return pgm_read_dword(&Te1u[index]);
 #else
     return Te1u[index];
@@ -579,7 +581,7 @@ unsigned long getTe1(uint16_t index) {
 }
 
 unsigned long getTe2(uint16_t index) {
-#if CONTIKI_TARGET_AVR_RAVEN
+#ifdef __AVR__ //#if CONTIKI_TARGET_AVR_RAVEN
     return pgm_read_dword(&Te2u[index]);
 #else
     return Te2u[index];
@@ -587,7 +589,7 @@ unsigned long getTe2(uint16_t index) {
 }
 
 unsigned long getTe3(uint16_t index) {
-#if CONTIKI_TARGET_AVR_RAVEN
+#ifdef __AVR__ //#if CONTIKI_TARGET_AVR_RAVEN
     return pgm_read_dword(&Te3u[index]);
 #else
     return Te3u[index];

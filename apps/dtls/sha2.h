@@ -41,7 +41,7 @@
 #ifndef SHA2_TYPES
 #define SHA2_TYPES
 typedef unsigned char uint8;
-#if CONTIKI_TARGET_AVR_RAVEN
+#ifdef __AVR__//#if CONTIKI_TARGET_AVR_RAVEN
 typedef unsigned long int uint32;
 #else
 typedef unsigned int  uint32;
