@@ -15,9 +15,9 @@ DTLS=1
 
 
 ifneq ($(ROLE),client)
- CFLAGS += -DHARD_CODED_ADDRESS=\"aaaa::02:232\"
+ CFLAGS += -DHARD_CODED_ADDRESS=\"::02:232\"
 else
- CFLAGS += -DHARD_CODED_ADDRESS=\"aaaa::02:230\"
+ CFLAGS += -DHARD_CODED_ADDRESS=\"::02:230\"
 endif
 
 
@@ -28,16 +28,15 @@ CFLAGS += -DUIP_CONF_IPV6=1
 
 
 # variable for Makefile.include
-ifneq ($(TARGET), minimal-net)
+ifeq ($(TARGET), minimal-net)
 
- CFLAGS += -DUIP_CONF_IPV6_RPL=0
  CFLAGS += -DUIP_CONF_ROUTER=0
+ CFLAGS += -DUIP_CONF_IPV6_RPL=0
  #CFLAGS+=-DUIP_CONF_IPV6_CHECKS=1 #this gave me debug
 
 else
 
- #${info INFO: compiling without RPL}
- #CFLAGS += -DUIP_CONF_IPV6_RPL=0
+ #CFLAGS += -DUIP_CONF_IPV6_RPL=1
 
 endif
 

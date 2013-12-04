@@ -35,6 +35,16 @@
 #include <dtls.h>
 
 
+#if CONTIKI_TARGET_MINIMAL_NET
+
+#ifndef DEBUG
+#define DEBUG DEBUG_PRINT
+#endif
+
+#include "net/uip-debug.h"
+
+#endif
+
 PROCESS(dtls_server_test_process, "DTLS server");
 AUTOSTART_PROCESSES(&dtls_server_test_process);
 static Connection* connection;
@@ -42,9 +52,15 @@ static void dtls_handler(process_event_t ev, process_data_t data){
 
 	if (ev == dtls_event){
 		if (dtls_connected()){
+			#if CONTIKI_TARGET_MINIMAL_NET
+			PRINTF("CONNECTED\n");
+			#endif
 			connection = (Connection*)data;
 		} else if (dtls_newdata()){
 			dtls_appdata[dtls_applen] = 0;
+			#if CONTIKI_TARGET_MINIMAL_NET
+			PRINTF("GOT NEW DATA: %s\n\n", dtls_appdata);
+			#endif
 		}
 	}
 
